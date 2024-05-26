@@ -19,8 +19,8 @@ const Navbar = () => {
             fontsize='24px'
             alignItems='flex-end'
         >
-            <Link to='/' style={{textDecoration: 'none', color: '#3A1212', borderBottom: '3px solid #7ABA78 '}}>Home</Link>
-            <a href="#recipes" style={{textDecoration: 'none', color: '3A1212'}}>Recipes</a>
+            <Link to='/' style={{textDecoration: 'none', color: '#3A1212', borderBottom: '3px solid #75A47F '}}>Home</Link>
+            <a href="#recipes" style={{textDecoration: 'none', color: '#3A1212'}}>Recipes</a>
         </Stack>
     </Stack>
   )
