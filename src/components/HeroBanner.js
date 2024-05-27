@@ -18,7 +18,7 @@ const HeroBanner = () => {
         Welcome to <br /> Recipe Search
       </Typography>
       <Typography fontsize='22px' lineHeight='35px' mb={4}>
-        Find your favorite recipe
+        discover over 1,000 recipes
       </Typography>
       <Button variant='contained' color='success' href='#recipes' sx={{backgroundColor: '#0A6847', padding: '10px'}}>
         Explore Recipes
