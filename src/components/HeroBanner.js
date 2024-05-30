@@ -17,10 +17,10 @@ const HeroBanner = () => {
       >
        Discover new <br /> recipes 
       </Typography>
+      <Stack>
+        <a href="#recipes" style={{ marginTop: '45px', textDecoration: 'none', width: '200px', textAlign: 'center', background: '#0A6847', padding: '14px', fontSize: '22px', textTransform: 'none', color: 'white', borderRadius: '4px' }}>Explore Recipes</a>
+      </Stack>
       
-      <Button variant='contained' color='success' href='#recipes' sx={{backgroundColor: '#0A6847', padding: '10px'}}>
-        Explore Recipes
-      </Button>
       <Typography fontWeight={600} color='#FFDB5C' sx={{opacity: 0.2,display: {lg: 'block', xs: 'none'}}} fontSize="200px">recipes</Typography>
       <img src={HeroBannerImg} alt='banner' className='hero-banner-img' />
     </Box>

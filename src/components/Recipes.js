@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Button, Stack, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Stack, Typography } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
-import { fetchData } from '../utils/fetchData';
 import RecipeCard from './RecipeCard';
 
 const Recipes = ( { searchedRecipes, setSearchedRecipes } ) => {
-  //console.log(searchedRecipes);
+  //console.log("SearchedRecipes is: ",searchedRecipes);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recipesPerPage] = useState(10);
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = searchedRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  const paginate = (event, value) => {
+    setCurrentPage(value);
+    window.scrollTo({ top: 1900, behavior: 'smooth' });
+  };
   return (
     <Box id="recipes"
     sx={{
@@ -22,18 +30,29 @@ const Recipes = ( { searchedRecipes, setSearchedRecipes } ) => {
         flexWrap='wrap'
         justifyContent='center'
       >
-        {searchedRecipes.map((hit, index) => {
-          const recipe = hit.recipe;
-          //console.log(recipe);
+        {currentRecipes.map( (curr) => {
+          const {recipe} = curr;
           return (
-            <RecipeCard
-              key={index}
-              id={index}
+            <RecipeCard 
+              key={recipe.uri.split('#')[1]}
+              id={recipe.uri.split('#')[1]}
               recipe={recipe}
+
             />
           )
-        })}
+        }
+        )}
       </Stack>
+      {searchedRecipes.length > 9 && (
+        <Pagination 
+          color='standard'
+          shape='rounded'
+          defaultPage={1}
+          count={Math.ceil(searchedRecipes.length / recipesPerPage)}
+          onChange={paginate}
+          size='large'
+        />
+      )}
     </Box>
   )
 }

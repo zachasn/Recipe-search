@@ -13,14 +13,14 @@ const SearchRecipes = ( { setSearchedRecipes } ) => {
   const handleSearch = async () => {
     if (search) {
       
-      
-      const url = `https://api.edamam.com/search?q=${search}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}&from=${0}&to=${10}`;
+      const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
       const recipeData = await fetchData(url);
-      //console.log(recipeData);
+      //console.log("recipeData: ",recipeData);
       const searchedRecipes = recipeData.hits; //array of recipes
-      //console.log(searchedRecipes);
+      //console.log("recipeData hits: ",searchedRecipes);
       setSearch('');
       setSearchedRecipes(searchedRecipes); 
+      
     }
   }
   return (
@@ -52,7 +52,9 @@ const SearchRecipes = ( { setSearchedRecipes } ) => {
           height: '56px', 
           position: 'absolute',
           right: '0'
-        }} onClick={handleSearch} >
+        }} 
+        onClick={handleSearch} 
+        >
           Search
         </Button>
       </Box>
