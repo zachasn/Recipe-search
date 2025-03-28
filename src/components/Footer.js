@@ -28,11 +28,11 @@ const Footer = () => (
         }}
       >
         <Typography variant="h6">
-          Made by {<a href="https://github.com/Nawlage" target='_blank' style={{ color: 'white' }}>Zach</a>}
+          Made by {<a href="https://github.com/Nawlage" target="_blank" rel="noreferrer" style={{ color: 'white' }}>Zach</a>}
         </Typography>
       </Box>
     </Stack>
-    
+
   </Box>
 );
 
