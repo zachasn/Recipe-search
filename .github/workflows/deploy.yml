@@ -4,12 +4,17 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    concurrency: ci-${{ github.ref }}
 
     steps:
       - name: Checkout
@@ -19,6 +24,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
+          cache: 'npm'
 
       - name: Install Dependencies
         run: npm install
@@ -33,3 +39,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
+          clean: true
+          branch: gh-pages
